@@ -15,7 +15,6 @@ fake = Faker()
 statuses = ['delivered', 'shipped', 'processing', 'canceled']
 genders = ['Male', 'Female', 'Other']
 
-customer_ids = []
 
 for _ in range(1000):
     customer_id = fake.unique.bothify('CUS####')
@@ -40,13 +39,12 @@ for _ in range(1000):
         age
     ))
 
-    customer_ids.append(customer_id)
+
 
 for _ in range(1000):
     order_id = fake.unique.bothify('ORD####')
-    customer_id = random.choice(customer_ids)  
+    customer_id = fake.bothify('CUS####')  
     order_status = random.choice(statuses)
-
     order_purchase_timestamp = fake.date_time_this_year()
     order_approved_at = order_purchase_timestamp + timedelta(minutes=random.randint(5, 120))
     order_delivered_timestamp = order_approved_at + timedelta(days=random.randint(1, 7))
@@ -69,7 +67,7 @@ for _ in range(1000):
     ))
 
 con.commit()
-print("1000 customers and 1000 orders inserted successfully.")
+print(" 1000 customers and 1000 orders inserted successfully.")
 
 cursor.close()
 con.close()
