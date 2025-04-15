@@ -16,7 +16,7 @@ statuses = ['delivered', 'shipped', 'processing', 'canceled']
 genders = ['Male', 'Female', 'Other']
 
 
-for _ in range(1000):
+for i in range(1000):
     customer_id = fake.unique.bothify('CUS####')
     customer_zip_code_prefix = fake.postcode()[:5]
     customer_city = fake.city()
@@ -41,7 +41,7 @@ for _ in range(1000):
 
 
 
-for _ in range(1000):
+for i in range(1000):
     order_id = fake.unique.bothify('ORD####')
     customer_id = fake.bothify('CUS####')  
     order_status = random.choice(statuses)
