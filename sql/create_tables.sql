@@ -18,3 +18,15 @@ CREATE TABLE customers (
     gender VARCHAR(10),
     age INT
 );
+
+CREATE TABLE products (
+    product_id VARCHAR(10) PRIMARY KEY,
+    product_name VARCHAR(100),
+    product_category_name VARCHAR(100),
+    product_weight_g INT,
+    product_length_cm INT,
+    product_height_cm INT,
+    product_width_cm INT,
+    product_cost DECIMAL(10,2)
+);
+
