@@ -18,9 +18,8 @@ CREATE TABLE customers (
     gender VARCHAR(10),
     age INT
 );
-
 CREATE TABLE products (
-    product_id VARCHAR(10) PRIMARY KEY,
+    product_id VARCHAR(10) NOT NULL PRIMARY KEY,
     product_name VARCHAR(100),
     product_category_name VARCHAR(100),
     product_weight_g INT,
@@ -28,5 +27,23 @@ CREATE TABLE products (
     product_height_cm INT,
     product_width_cm INT,
     product_cost DECIMAL(10,2)
+);
+CREATE TABLE order_items (
+    order_id VARCHAR(10),
+    order_item_id INT,
+    product_id VARCHAR(10),
+    seller_id VARCHAR(10),
+    price DECIMAL(10,2),
+    shipping_charges DECIMAL(10,2),
+    PRIMARY KEY (order_id, order_item_id),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+CREATE TABLE customer_orders (
+    customer_order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id VARCHAR(10),
+    order_id VARCHAR(10),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 
