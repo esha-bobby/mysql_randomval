@@ -57,7 +57,7 @@ def main():
 
     db.commit()
     db.close()
-    print("✅ All data inserted successfully!")
+    print(" All data inserted successfully!")
 
 if __name__ == '__main__':
     main()
