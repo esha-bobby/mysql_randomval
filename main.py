@@ -38,7 +38,7 @@ def main():
 
     order_item_id_tracker = {}
 
-    for _ in range(1000):  # you said to keep it 1000
+    for _ in range(1000):  
         order_id = random.choice(order_ids)
         if order_id not in order_item_id_tracker:
             order_item_id_tracker[order_id] = 1
