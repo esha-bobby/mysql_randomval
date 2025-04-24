@@ -36,7 +36,9 @@ def main():
         customer_order = CustomerOrder(customer_id, order.order_id)
         customer_order.insert(db)
 
-    for _ in range(1000):  
+    order_item_id_tracker = {}
+
+    for _ in range(1000):  # you said to keep it 1000
         order_id = random.choice(order_ids)
 
         item = OrderItem(
