@@ -36,18 +36,12 @@ def main():
         customer_order = CustomerOrder(customer_id, order.order_id)
         customer_order.insert(db)
 
-    order_item_id_tracker = {}
-
-    for _ in range(1000):  # you said to keep it 1000
+    for _ in range(1000):  
         order_id = random.choice(order_ids)
-        if order_id not in order_item_id_tracker:
-            order_item_id_tracker[order_id] = 1
-        else:
-            order_item_id_tracker[order_id] += 1
 
         item = OrderItem(
             order_id=order_id,
-            order_item_id=order_item_id_tracker[order_id],
+            order_item_id=fake.unique.bothify('ITEM####'), 
             product_id=random.choice(product_ids),
             seller_id=fake.unique.bothify('SEL####'),
             price=round(random.uniform(5, 500), 2),
@@ -55,9 +49,10 @@ def main():
         )
         item.insert(db)
 
+
     db.commit()
     db.close()
-    print("✅ All data inserted successfully!")
+    print(" All data inserted successfully!")
 
 if __name__ == '__main__':
     main()
